@@ -1,24 +1,53 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| name               | string     | null: false               |
+| email              | string     | null: false, unique: true |
 
-Things you may want to cover:
 
-* Ruby version
+### Association
+- has_many :posts
+- has_many :comments
+- has_many :favorites
 
-* System dependencies
+## postsテーブル
 
-* Configuration
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| museum_name       | string     | null: false                    |
+| exhibition_title  | string     |                                |
+| text              | text       |                                |
+| prefecture_id     | integer    | null: false                    |
+| impressive_artist | text       |                                |
+| impressive_work   | text       |                                |
+| rating            | float      | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- belongs_to :user
+- has_many :favorites
+- has_many :comments
 
-* Database initialization
+## commentsテーブル
 
-* How to run the test suite
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| text             | text       | null: false                    |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :user
+- belongs_to :post
 
-* Deployment instructions
+## favoritesテーブル
 
-* ...
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :post
