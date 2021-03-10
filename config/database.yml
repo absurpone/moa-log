@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: moa_log_production
-  username: moa_log
-  password: <%= ENV['MOA_LOG_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock  
