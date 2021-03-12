@@ -31,6 +31,7 @@ a {
   width: 40vw;
   height: 4vh;
   margin-left: 5vw;
+  margin-right: 3vw;
   display: flex;
 }
 
@@ -60,13 +61,23 @@ a {
   align-items: flex-end;
 }
 
-.sign-up, .log-out{
+.sign-up, .log-out {
   text-decoration: none;
   color: white;
   margin: 0 3vw;
+  font-size: 15px;
 }
 
-.log-in, .new-post {
+.log-in, .header-user-name{
   text-decoration: none;
   color: white;
+  font-size: 15px;
+}
+
+.new-post {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  border: white solid 1px;
+  padding: 1vh
 }
