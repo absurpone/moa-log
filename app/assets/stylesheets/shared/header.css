@@ -28,7 +28,7 @@ a {
 }
 
 .search-form {
-  width: 50vw;
+  width: 40vw;
   height: 4vh;
   margin-left: 5vw;
   display: flex;
@@ -60,13 +60,13 @@ a {
   align-items: flex-end;
 }
 
-.sign-up {
+.sign-up, .log-out{
   text-decoration: none;
   color: white;
   margin: 0 3vw;
 }
 
-.log-in {
+.log-in, .new-post {
   text-decoration: none;
   color: white;
 }
