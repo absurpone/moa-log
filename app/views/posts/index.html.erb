@@ -1,2 +1,123 @@
-<h1>Posts#index</h1>
-<p>表示確認用の文章</p>
+<%= render "shared/header" %>
+<div class="main">
+  <div class="title-contents">
+    <p class='service-explain'>
+      MoALogで
+    </p>
+    <p class='service-explain'>
+      行きたい美術館を
+    </p>
+    <p class='service-explain'>
+      見つけよう
+    </p>
+  </div>
+
+  <%# 地域から探すの欄 %>
+  <div class="select-area-contents">
+    <h2 class="select-area-title">
+      地域から探す
+    </h2>
+    <div class='areas'>
+      <div class="upper-areas">
+        <div class='area'>
+          <%= link_to '北海道・東北', "#", class:'area-text'%>
+        </div>
+        <div class='area'>
+           <%= link_to '関東', "#", class:'area-text'%>
+        </div>
+        <div class='area'>
+           <%= link_to '中部', "#", class:'area-text'%>
+        </div>
+      </div>
+      <div class='lower-areas'>
+        <div class='area'>
+           <%= link_to '近畿', "#", class:'area-text'%>
+        </div>
+        <div class='area'>
+           <%= link_to '中国・四国', "#", class:'area-text'%>
+        </div>
+        <div class='area'>
+           <%= link_to '九州・沖縄', "#", class:'area-text'%>
+        </div>
+      </div>
+     </div> 
+  </div>
+  <%# //地域から探すの欄 %>
+
+  <%# 投稿一覧 %>
+  <div class="new-post-contents">
+    <h2 class="new-posts-title">新着投稿一覧</h2>
+    <ul class='post-lists'>
+      <li class='post-list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "post-img" %>
+        <div class='post-info'>
+          <div class='post-info-head'>
+            <div class='museum-name'>
+              ○△美術館
+            </div>
+            <div class='user-name'>
+              by ユーザー名
+            </div>
+          </div>
+          <div class='rating-stars'>
+            ★★ 紐付けたい
+         </div>
+        <% end %>
+      </li>
+      <li class='post-list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "post-img" %>
+        <div class='post-info'>
+          <div class='post-info-head'>
+            <div class='museum-name'>
+              ○△美術館
+            </div>
+            <div class='user-name'>
+              by ユーザー名
+            </div>
+          </div>
+          <div class='rating-stars'>
+            ★★ 紐付けたい
+         </div>
+        <% end %>
+      </li>
+      <li class='post-list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "post-img" %>
+        <div class='post-info'>
+          <div class='post-info-head'>
+            <div class='museum-name'>
+              ○△美術館
+            </div>
+            <div class='user-name'>
+              by ユーザー名
+            </div>
+          </div>
+          <div class='rating-stars'>
+            ★★ 紐付けたい
+         </div>
+        <% end %>
+      </li>
+      <li class='post-list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "post-img" %>
+        <div class='post-info'>
+          <div class='post-info-head'>
+            <div class='museum-name'>
+              ○△美術館<span class='post-info-prefecture'>(都道府県)</span>
+            </div>
+            <div class='user-name'>
+              by ユーザー名
+            </div>
+          </div>
+          <div class='rating-stars'>
+            ★★ 紐付けたい
+         </div>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <%# 投稿一覧 %>
+</div>
+<%= render "shared/footer" %>

@@ -1,0 +1,18 @@
+a { 
+  text-decoration: none;
+}
+
+.footer-contents {
+  width: 100vw;
+  height: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-logo {
+  color: white;
+  font-weight: bold;
+  font-size: 5vh;
+}

@@ -1,0 +1,18 @@
+<header class="top-page-header">
+  <div class='search-bar-contents'>
+    <%= link_to 'MoALog', "#", class:'moalog-icon'%>    
+    <form class="search-form">
+      <input type="text" placeholder="検索" class="input-box">
+      <div class="search-btn">
+        <i class="fas fa-search"></i>
+      </div>
+    </form>
+    <div class="nav">
+      <ul class='lists-right'>
+      <%# ログイン状態で表示変える %>
+        <li><%= link_to 'サインアップ', '#', class: "sign-up" %></li>
+        <li><%= link_to 'ログイン', '#', class: "log-in" %></li>
+      </ul>
+    </div>
+  </div>
+</header>
