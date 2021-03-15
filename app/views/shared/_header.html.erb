@@ -8,11 +8,18 @@
       </div>
     </form>
     <div class="nav">
+    <% if user_signed_in? %>  
       <ul class='lists-right'>
-      <%# ログイン状態で表示変える %>
-        <li><%= link_to 'サインアップ', '#', class: "sign-up" %></li>
-        <li><%= link_to 'ログイン', '#', class: "log-in" %></li>
+         <li><%= link_to current_user.name, "#", class: "header-user-name" %> </li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %></li>
+        <li><%= link_to '新規投稿', '#', class: "new-post" %></li>
       </ul>
+    <% else %>
+      <ul class='lists-right'>
+        <li><%= link_to 'サインアップ', new_user_registration_path, class: "sign-up" %></li>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "log-in" %></li>
+      </ul>
+    <% end %>
     </div>
   </div>
 </header>
