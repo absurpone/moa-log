@@ -8,12 +8,27 @@
     <%= f.label :impressive_work, "所在地" %><br />
     <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"class: :form__text"}) %>
   </div>
-  
-  <div class="field">
-    <%= f.label :rating, "評価" %><br />
-    <%= f.text_field :rating %>
+
+   <div class="form-group row" id="star">
+    <%= f.label :rating,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rating, id: :review_star %>
   </div>
 
+  <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+
+    scoreName: 'post[rating]',
+    half: true,
+  });
+  </script>  
+
+  <!-- //評価javascript -->
+  
   <div class="field">
     <%= f.label :museum_name, "施設名" %><br />
     <%= f.text_field :museum_name %>
@@ -38,6 +53,10 @@
     <%= f.label :impressive_work, "印象に残った作品名" %><br />
     <%= f.text_area :impressive_work, class: :form__text %>
   </div>
+
+ 
+
+  
 
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>
