@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+
+<main class="main">
+  <div class="inner">
+    <div class="post__wrapper">
+      <p class="post__hedding">
+        <%= @post.museum_name %>
+      </p>
+      <%= link_to "by #{ @post.user.name }", '#', class: :post__user %>
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+          <div class="post__manage">
+            <%= link_to "編集する", '#', method: :get, class: :post__btn %>
+            <%= link_to "削除する", '#', method: :get, class: :post__btn %>
+          </div>
+        <% end %>
+      <div class="post__image">
+        <%= image_tag @post.image, class:"item-box-img" %>
+      </div>
+       <%# 星の表示 %>
+            <div id="star-rate<%= @post.id %>"></div>    
+              <script>
+                $('#star-rate<%= @post.id%>').raty({
+                  size      : 10,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  starHalf  : '<%= asset_path('star-half.png') %>',
+                  half      : true,
+                  readOnly: true,
+                  score: <%= @post.rating %>,
+                });
+              </script>
+            </div>
+            <%# //星の表示 %>
+      <div class="post__body">
+        <div class="post__detail">
+          <p class="detail__title">仮の文章</p>
+          <p class="detail__message">
+            <%= @post.exhibition_title %>
+          </p>
+        </div>
+        <div class="post__detail">
+          <p class="detail__title">感想</p>
+          <p class="detail__message">
+            <%= @post.text %>
+          </p>
+          <p class="detail__title">所在地</p>
+          <p class="detail__message">
+            <%= @post.prefecture.name %>
+          </p>
+          <p class="detail__title">印象的だった作家</p>
+          <p class="detail__message">
+            <%= @post.impressive_artist %>
+          </p>
+          <p class="detail__title">印象的だった作品名</p>
+          <p class="detail__message">
+            <%= @post.impressive_work %>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
