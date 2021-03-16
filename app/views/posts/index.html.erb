@@ -2,14 +2,14 @@
 <div class="main">
   <div class="title-contents">
     <p class='service-explain'>
-      テスト
+      MoALogで
     </p>
-    <%# <p class='service-explain'>
+    <p class='service-explain'>
       行きたい美術館を
     </p>
     <p class='service-explain'>
       見つけよう
-    </p> %>
+    </p>
   </div>
 
   <%# 地域から探すの欄 %>
@@ -48,41 +48,39 @@
   <div class="new-post-contents">
     <h2 class="new-posts-title">新着投稿一覧</h2>
     <ul class='post-lists'>
-      <li class='post-list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "post-img" %>
-        <div class='post-info'>
-          <div class='post-info-head'>
-            <div class='museum-name'>
-              ○△美術館
-            </div>
-            <div class='user-name'>
-              by ユーザー名
-            </div>
+      <% @posts.each do |post| %>
+        <li class='post-list'>
+          <%= link_to '#' do %>
+          <div class='post-img-content'>
+            <%= image_tag post.image, class: "post-img" %>
           </div>
-          <div class='rating-stars'>
-            ★★ 紐付けたい
-         </div>
-        <% end %>
-      </li>
-     
-      <li class='post-list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "post-img" %>
-        <div class='post-info'>
-          <div class='post-info-head'>
-            <div class='museum-name'>
-              ○△美術館<span class='post-info-prefecture'>(都道府県)</span>
+          <div class='post-info'>
+            <div class='post-info-head'>
+              <div class='museum-name'>
+                <%= post.museum_name %>
+              </div>
             </div>
+            <%# 星の表示 %>
+            <div id="star-rate<%= post.id %>"></div>    
+              <script>
+                $('#star-rate<%= post.id%>').raty({
+                  size      : 10,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  starHalf  : '<%= asset_path('star-half.png') %>',
+                  half      : true,
+                  readOnly: true,
+                  score: <%= post.rating %>,
+                });
+              </script>
+            </div>
+            <%# //星の表示 %>
             <div class='user-name'>
-              by ユーザー名
+              by <%= post.user.name %>
             </div>
-          </div>
-          <div class='rating-stars'>
-            ★★ 紐付けたい
-         </div>
-        <% end %>
-      </li>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
   <%# 投稿一覧 %>
