@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
+    @posts = Post.includes(:user).order('created_at DESC')
   end
 
   def new
