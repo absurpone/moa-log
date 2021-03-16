@@ -17,20 +17,8 @@
         <%= image_tag @post.image, class:"item-box-img" %>
       </div>
        <%# 星の表示 %>
-            <div id="star-rate<%= @post.id %>"></div>    
-              <script>
-                $('#star-rate<%= @post.id%>').raty({
-                  size      : 10,
-                  starOff   : '<%= asset_path('star-off.png') %>',
-                  starOn    : '<%= asset_path('star-on.png') %>',
-                  starHalf  : '<%= asset_path('star-half.png') %>',
-                  half      : true,
-                  readOnly: true,
-                  score: <%= @post.rating %>,
-                });
-              </script>
-            </div>
-            <%# //星の表示 %>
+       <%= render partial: "star", locals: { post: @post } %>     
+       <%# //星の表示 %>
       <div class="post__body">
         <div class="post__detail">
           <p class="detail__title">仮の文章</p>
@@ -55,7 +43,6 @@
           <p class="detail__message">
             <%= @post.impressive_work %>
           </p>
-
         </div>
       </div>
     </div>
