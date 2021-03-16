@@ -9,8 +9,8 @@
       <%= link_to "by #{ @post.user.name }", '#', class: :post__user %>
         <% if user_signed_in? && current_user.id == @post.user_id %>
           <div class="post__manage">
-            <%= link_to "編集する", '#', method: :get, class: :post__btn %>
-            <%= link_to "削除する", '#', method: :get, class: :post__btn %>
+            <%= link_to "編集", '#', method: :get, class: :post__btn %>
+            <%= link_to "削除", '#', method: :get, class: :post__btn %>
           </div>
         <% end %>
       <div class="post__image">
