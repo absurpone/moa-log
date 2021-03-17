@@ -9,9 +9,4 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX
 
   has_many :posts
-  has_many :favorites
-
-  def liked_by?(post_id)
-    favorites.where(post_id: post_id).exists?
-  end
 end

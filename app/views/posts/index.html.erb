@@ -54,11 +54,7 @@
           <div class='post-img-content'>
             <%= image_tag post.image, class: "post-img" %>
           </div>
-          <% if current_user.liked_by?(post.id) %>
-            <td><%= link_to 'お気に入り解除', destroy_favorite_path(post), method: :DELETE, remote: true %><%= post.favorites.count %></td>
-          <% else %>
-            <td><%= link_to 'お気に入り登録', create_favorite_path(post), method: :POST, remote: true %><%= post.favorites.count %></td>
-          <% end %>
+          
           <div class='post-info'>
             <div class='post-info-head'>
               <div class='museum-name'>
@@ -66,7 +62,19 @@
               </div>
             </div>
             <%# 星の表示 %>
-            <%= render partial: "star", locals: { post: @post } %> 
+            <div id="star-rate<%= post.id %>"></div>    
+              <script>
+                $('#star-rate<%= post.id%>').raty({
+                  size      : 10,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  starHalf  : '<%= asset_path('star-half.png') %>',
+                  half      : true,
+                  readOnly: true,
+                  score: <%= post.rating %>,
+                });
+              </script>
+            </div>
             <%# //星の表示 %>
             <div class='user-name'>
               by <%= post.user.name %>
