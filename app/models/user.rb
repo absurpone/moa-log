@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: 'post'
 
   def favorited_by?(post_id)
     favorites.where(post_id: post_id).exists?

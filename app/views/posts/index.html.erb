@@ -62,18 +62,7 @@
               </div>
             </div>
             <%# 星の表示 %>
-            <div id="star-rate<%= post.id %>"></div>    
-              <script>
-                $('#star-rate<%= post.id%>').raty({
-                  size      : 10,
-                  starOff   : '<%= asset_path('star-off.png') %>',
-                  starOn    : '<%= asset_path('star-on.png') %>',
-                  starHalf  : '<%= asset_path('star-half.png') %>',
-                  half      : true,
-                  readOnly: true,
-                  score: <%= post.rating %>,
-                });
-              </script>
+             <%= render 'posts/star', post: post %>
             </div>
             <%# //星の表示 %>
             <div class='user-name'>
@@ -85,6 +74,7 @@
             </tr>
             <%# //お気に入り %>
           <% end %>
+          </div>
         </li>
       <% end %>
     </ul>
