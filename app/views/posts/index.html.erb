@@ -83,23 +83,10 @@
               by <%= post.user.name %>
             </div>
             <%# お気に入り %>
-              <div class='favorite'>
-                <% if current_user.favorited_by?(post.id) %>
-                  <td>
-                    <%= link_to destroy_favorite_path(post), class: "favorite-link", method: :delete do %>
-                      <i class="fa fa-heart unlike-btn"></i>
-                    <% end %>
-                    <%= post.favorites.count %></td>
-                <% else %>
-                  <td>
-                    <%= link_to create_favorite_path(post), class: "favorite-link", method: :post do %>
-                      <i class="fa fa-heart like-btn"></i>
-                    <% end %>
-                    <%= post.favorites.count %>
-                  </td>
-                <% end %>
-              </div>
-              <%# //お気に入り %>
+            <tr id="post_<%= post.id %>">
+              <%= render 'favorite', post: post %>
+            </tr>
+            <%# //お気に入り %>
           <% end %>
         </li>
       <% end %>
