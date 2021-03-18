@@ -10,7 +10,8 @@
     <div class="nav">
     <% if user_signed_in? %>  
       <ul class='lists-right'>
-         <li><%= link_to 'マイページ', user_path(current_user.id), class: "header-user-name" %> </li>
+        <li><%= link_to 'お気に入り一覧', favorites_index_path, class: "header-user-name" %> </li>
+        <li><%= link_to 'マイページ', user_path(current_user.id), class: "header-user-name" %> </li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %></li>
         <li><%= link_to '新規投稿', new_post_path, class: "new-post" %></li>
       </ul>
