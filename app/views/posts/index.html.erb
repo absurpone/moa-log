@@ -79,7 +79,14 @@
             <div class='user-name'>
               by <%= post.user.name %>
             </div>
+            <%# お気に入り %>
+            <tr id="post_<%= post.id %>">
+              <%= render 'favorite', post: post %>
+            </tr>
+            <%# //お気に入り %>
+          
           <% end %>
+        
         </li>
       <% end %>
     </ul>
