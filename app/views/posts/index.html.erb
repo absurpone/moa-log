@@ -57,13 +57,10 @@
           
           <div class='post-info'>
             <div class='post-info-head'>
-             
               <div class='museum-name'>
                 <%= post.museum_name %>
               </div>
             </div>
-              
-            
             <%# 星の表示 %>
             <div id="star-rate<%= post.id %>"></div>    
               <script>
@@ -87,7 +84,9 @@
               <%= render 'favorite', post: post %>
             </tr>
             <%# //お気に入り %>
+          
           <% end %>
+        
         </li>
       <% end %>
     </ul>
