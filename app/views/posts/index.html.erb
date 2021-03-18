@@ -57,12 +57,13 @@
           
           <div class='post-info'>
             <div class='post-info-head'>
-              <%# お気に入り %>
-              <%# //お気に入り %>
+             
               <div class='museum-name'>
                 <%= post.museum_name %>
               </div>
             </div>
+              
+            
             <%# 星の表示 %>
             <div id="star-rate<%= post.id %>"></div>    
               <script>
@@ -81,6 +82,15 @@
             <div class='user-name'>
               by <%= post.user.name %>
             </div>
+            <%# お気に入り %>
+              <div class='favorite'>
+                <% if current_user.favorited_by?(post.id) %>
+                  <td>い<%= link_to 'いいね解除', destroy_favorite_path(post), method: :delete %></td>
+                <% else %>
+                  <td><%= link_to 'いいね', create_favorite_path(post), method: :post %></td>
+                <% end %>
+              </div>
+              <%# //お気に入り %>
           <% end %>
         </li>
       <% end %>
