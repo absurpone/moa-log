@@ -77,16 +77,14 @@
             </div>
             <%# //星の表示 %>
             <div class='user-name'>
-              by <%= post.user.name %>
+              by <%= link_to post.user.name, user_path(post.user.id) %>
             </div>
             <%# お気に入り %>
             <tr id="post_<%= post.id %>">
               <%= render 'favorite', post: post %>
             </tr>
             <%# //お気に入り %>
-          
           <% end %>
-        
         </li>
       <% end %>
     </ul>
