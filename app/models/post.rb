@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  
+  has_many :favorites
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
 
@@ -11,4 +11,5 @@ class Post < ApplicationRecord
   validates :image, presence: true
 
   validates :prefecture_id, presence: true, numericality: { other_than: 1 }
+
 end
