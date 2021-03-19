@@ -1,12 +1,12 @@
 <header class="top-page-header">
   <div class='search-bar-contents'>
     <%= link_to 'MoALog', root_path, class:'moalog-icon'%>    
-    <form class="search-form">
-      <input type="text" placeholder="検索" class="input-box">
-      <div class="search-btn">
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword,  placeholder: "キーワードから探す", class: "input-box" %>
+      <button class="search-btn">
         <i class="fas fa-search"></i>
-      </div>
-    </form>
+      </button>
+    <% end %>
     <div class="nav">
     <% if user_signed_in? %>  
       <ul class='lists-right'>

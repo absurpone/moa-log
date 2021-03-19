@@ -1,0 +1,11 @@
+<%= render "shared/header" %>
+ <div class="new-post-contents">
+    <h2 class="new-posts-title">中国・四国の投稿一覧</h2>
+    <ul class='post-lists'>
+      <% @posts_chugoku_shikoku.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
+    </ul>
+  </div>
+  <%# 投稿一覧 %>
+<%= render "shared/footer" %>
