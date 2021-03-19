@@ -8,19 +8,30 @@
       </button>
     <% end %>
     <div class="nav">
-    <% if user_signed_in? %>  
-      <ul class='lists-right'>
-        <li><%= link_to 'お気に入り一覧', favorites_index_path, class: "header-user-name" %> </li>
-        <li><%= link_to 'マイページ', user_path(current_user.id), class: "header-user-name" %> </li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-out" %></li>
-        <li><%= link_to '新規投稿', new_post_path, class: "new-post" %></li>
-      </ul>
-    <% else %>
-      <ul class='lists-right'>
-        <li><%= link_to 'サインアップ', new_user_registration_path, class: "sign-up" %></li>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "log-in" %></li>
-      </ul>
-    <% end %>
+      <div class="new-post-btn">
+        <%= link_to new_post_path, title: '新規投稿' do %>
+          <i class="fa fa-edit "></i> 
+        <% end %>
+      </div>
+      <div class="hamburger-menu">
+          <input type="checkbox" id="menu-btn-check">
+          <label for="menu-btn-check" class="menu-btn"><span></span></label>
+          <div class="menu-content">
+            <% if user_signed_in? %>    
+              <ul>
+                <li><%= link_to '新規投稿', new_post_path %></li>
+                <li><%= link_to 'お気に入り一覧', favorites_index_path %> </li>
+                <li><%= link_to 'マイページ', user_path(current_user.id) %> </li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              </ul>
+            <% else %>
+              <ul>
+                <li><%= link_to 'ログイン', new_user_session_path, class: "log-in" %></li>
+                <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+              </ul>
+            <% end %>
+          </div>
+      </div>
     </div>
   </div>
 </header>
