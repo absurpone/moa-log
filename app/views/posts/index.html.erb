@@ -22,9 +22,11 @@
         <div class='area'>
           <%= link_to '北海道・東北', search_hokkaido_tohoku_posts_path, class:'area-text'%>
         </div>
-        <div class='area'>
-           <%= link_to '関東', search_kanto_posts_path, class:'area-text'%>
-        </div>
+        <%= link_to search_kanto_posts_path do %>
+          <div class='kanto_area'>
+            <p class="area-text">関東</p>>
+          </div>
+        <% end %>
         <div class='area'>
            <%= link_to '中部',  search_chubu_posts_path, class:'area-text'%>
         </div>
