@@ -39,6 +39,35 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @posts = Post.search(params[:keyword])
+  end
+
+  def search_hokkaido_tohoku
+    @posts_hokkaido_tohoku = Post.search_hokkaido_tohoku
+  end
+  
+  def search_kanto
+    @posts_kanto = Post.search_kanto
+  end
+
+  def search_chubu
+    @posts_chubu = Post.search_chubu
+  end
+
+  def search_kinki
+    @posts_kinki = Post.search_kinki
+  end
+
+  def search_chugoku_shikoku
+    @posts_chugoku_shikoku = Post.search_chugoku_shikoku
+  end
+
+  def search_kyusyu_okinawa
+    @posts_kyusyu_okinawa = Post.search_kyusyu_okinawa
+  end
+
+
   private
 
   def post_params

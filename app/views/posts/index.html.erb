@@ -15,29 +15,29 @@
   <%# 地域から探すの欄 %>
   <div class="select-area-contents">
     <h2 class="select-area-title">
-      地域から探す
+      地域から投稿を探す
     </h2>
     <div class='areas'>
       <div class="upper-areas">
         <div class='area'>
-          <%= link_to '北海道・東北', "#", class:'area-text'%>
+          <%= link_to '北海道・東北', search_hokkaido_tohoku_posts_path, class:'area-text'%>
         </div>
         <div class='area'>
-           <%= link_to '関東', "#", class:'area-text'%>
+           <%= link_to '関東', search_kanto_posts_path, class:'area-text'%>
         </div>
         <div class='area'>
-           <%= link_to '中部', "#", class:'area-text'%>
+           <%= link_to '中部',  search_chubu_posts_path, class:'area-text'%>
         </div>
       </div>
       <div class='lower-areas'>
         <div class='area'>
-           <%= link_to '近畿', "#", class:'area-text'%>
+           <%= link_to '近畿', search_kinki_posts_path, class:'area-text'%>
         </div>
         <div class='area'>
-           <%= link_to '中国・四国', "#", class:'area-text'%>
+           <%= link_to '中国・四国', search_chugoku_shikoku_posts_path, class:'area-text'%>
         </div>
         <div class='area'>
-           <%= link_to '九州・沖縄', "#", class:'area-text'%>
+           <%= link_to '九州・沖縄', search_kyusyu_okinawa_posts_path, class:'area-text'%>
         </div>
       </div>
      </div> 
@@ -49,33 +49,7 @@
     <h2 class="new-posts-title">新着投稿一覧</h2>
     <ul class='post-lists'>
       <% @posts.each do |post| %>
-        <li class='post-list'>
-          <%= link_to post_path(post.id) do %>
-          <div class='post-img-content'>
-            <%= image_tag post.image, class: "post-img" %>
-          </div>
-          
-          <div class='post-info'>
-            <div class='post-info-head'>
-              <div class='museum-name'>
-                <%= post.museum_name %>
-              </div>
-            </div>
-            <%# 星の表示 %>
-             <%= render 'posts/star', post: post %>
-            </div>
-            <%# //星の表示 %>
-            <div class='user-name'>
-              by <%= link_to post.user.name, user_path(post.user.id) %>
-            </div>
-            <%# お気に入り %>
-            <tr id="post_<%= post.id %>">
-              <%= render 'favorite', post: post %>
-            </tr>
-            <%# //お気に入り %>
-          <% end %>
-          </div>
-        </li>
+        <%= render 'posts/post', post: post %>
       <% end %>
     </ul>
   </div>
