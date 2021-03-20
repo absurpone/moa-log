@@ -80,9 +80,76 @@ justify-content: space-between;
   justify-content: center;
 }
 
+.hokkaido_tohoku_area {
+  width: 20vw;
+  height: 100%;
+  border: black solid 1px;
+  background-image: image-url('aomori.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chubu_area {
+  width: 20vw;
+  height: 100%;
+  border: black solid 1px;
+  background-image: image-url('toyota.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kinki_area {
+  width: 20vw;
+  height: 100%;
+  border: black solid 1px;
+  background-image: image-url('hyogo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chugoku_shikoku_area {
+  width: 20vw;
+  height: 100%;
+  border: black solid 1px;
+  background-image: image-url('shikoku.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kyusyu_okinawa_area {
+  width: 20vw;
+  height: 100%;
+  border: black solid 1px;
+  background-image: image-url('kyusyu.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .area-text {
   color: white;
-  font-size: 5vw;
+  font-size: 3vw;
+  text-align: center;
+  text-shadow: 1px 1px 0 #000
   
 }
 

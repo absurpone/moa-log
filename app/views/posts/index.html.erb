@@ -19,28 +19,38 @@
     </h2>
     <div class='areas'>
       <div class="upper-areas">
-        <div class='area'>
-          <%= link_to '北海道・東北', search_hokkaido_tohoku_posts_path, class:'area-text'%>
-        </div>
-        <%= link_to search_kanto_posts_path do %>
-          <div class='kanto_area'>
-            <p class="area-text">関東</p>>
+        <%= link_to search_hokkaido_tohoku_posts_path do %>
+          <div class='hokkaido_tohoku_area'>
+            <p class="area-text">北海道・東北</p>
           </div>
         <% end %>
-        <div class='area'>
-           <%= link_to '中部',  search_chubu_posts_path, class:'area-text'%>
-        </div>
+        <%= link_to search_kanto_posts_path do %>
+          <div class='kanto_area'>
+            <p class="area-text">関東</p>
+          </div>
+        <% end %>
+        <%= link_to search_chubu_posts_path do %>
+          <div class='chubu_area'>
+            <p class="area-text">中部</p>
+          </div>
+        <% end %>
       </div>
       <div class='lower-areas'>
-        <div class='area'>
-           <%= link_to '近畿', search_kinki_posts_path, class:'area-text'%>
-        </div>
-        <div class='area'>
-           <%= link_to '中国・四国', search_chugoku_shikoku_posts_path, class:'area-text'%>
-        </div>
-        <div class='area'>
-           <%= link_to '九州・沖縄', search_kyusyu_okinawa_posts_path, class:'area-text'%>
-        </div>
+        <%= link_to search_kinki_posts_path do %>
+          <div class='kinki_area'>
+            <p class="area-text">近畿</p>
+          </div>
+        <% end %>
+         <%= link_to search_chugoku_shikoku_posts_path do %>
+          <div class='chugoku_shikoku_area'>
+            <p class="area-text">中国・四国</p>
+          </div>
+        <% end %>
+          <%= link_to search_kyusyu_okinawa_posts_path do %>
+          <div class='kyusyu_okinawa_area'>
+            <p class="area-text">九州・沖縄</p>
+          </div>
+        <% end %>
       </div>
      </div> 
   </div>
