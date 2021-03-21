@@ -1,0 +1,82 @@
+.new-post-contents {
+  background-color: #f5f5f5;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 500px;
+}
+
+.page-heading {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.indispensable {
+  
+  margin-left: 3px;
+  padding: 3px;
+  border-radius: 2px;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.weight-bold-text {
+  font-weight: bold;
+  min-width: 170px;
+  margin-bottom: 10px;
+}
+
+.click-upload {
+  margin: 15px 0;
+  min-width: 250px;
+}
+
+.select-box{
+  height: 30px;
+  width: 80%;
+  background-color: #f5f5f5;
+  padding-left: 20px;
+  margin-bottom: 1vh;
+}
+
+.museum-name-input, 
+.exhibition-title-input, 
+.impressive-artist-input,
+.impressive-work-input {
+  padding: 2vh 0;
+}
+
+.museum-name-text,
+.exhibiton-title-text,
+.impressive-input,
+.text-input-area {
+  width: 100%;
+  padding: 16px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+}
+
+.post-btn-contents {
+  width: 100%;
+  text-align: center;
+}
+
+.post-btn {
+  background: yellowgreen;
+  border: 1px solid yellowgreen;
+  color: white;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  margin-bottom: 5vh;
+
+}
+
+.caution {
+  padding: 5vh 0;
+}
