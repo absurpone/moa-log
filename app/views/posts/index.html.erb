@@ -63,65 +63,7 @@
     </h2>
     <ul class='post-lists'>
       <% @posts.each do |post| %>
-        <li class='list'>
-          <%= link_to post_path(post.id) do %>
-          <div class='post-img-content'>
-            <%= image_tag post.image, class: "post-img" %>
-          </div>
-          <div class='list-right'>
-            <div class='post-info'>
-              <h3 class='museum-name'>
-                <%= post.museum_name %>
-              </h3>
-              <h4 class='prefecture'>
-                <%= "（#{post.prefecture.name})" %>
-              </h4>
-              <%# 星の表示 %>
-              <div class="star-area">
-                <div id="star-rate-<%= post.id %>"></div>
-                  <script>
-                  $('#star-rate-<%= post.id %>').raty({
-                    size: 36,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half: true,
-                    readOnly: true,
-                    score: <%= post.rating %>,
-                  });
-                  </script>  
-              <%# //星の表示 %>
-                <div class='user-name'>
-                  by <%= link_to post.user.name, user_path(post.user.id) %>
-                </div>
-              </div>
-              <%# お気に入り表示 %>
-              <div class='favorite'>
-                <% if user_signed_in? %>
-                  <% if current_user.favorited_by?(post.id) %>
-                    <td>
-                      <%= link_to destroy_favorite_path(post), class: "favorite-link", method: :delete do %>
-                        <i class="fa fa-heart unlike-btn"></i>
-                      <% end %>
-                      <%= post.favorites.count %></td>
-                  <% else %>
-                    <td>
-                      <%= link_to create_favorite_path(post), class: "favorite-link", method: :post do %>
-                        <i class="fa fa-heart like-btn"></i>
-                      <% end %>
-                      <%= post.favorites.count %>
-                    </td>
-                  <% end %>
-                <% else %>
-                <i class="fa fa-heart unlike-btn"></i>
-                <%= post.favorites.count %>
-                <% end %>
-              </div>
-              <%# //お気に入り表示 %>     
-            </div>
-          </div>
-        <% end %>
-        </li>
+        <%= render partial: "post", locals: { post: post } %>
       <% end %>
     </ul>
   </div>

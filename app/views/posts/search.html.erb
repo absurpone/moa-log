@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
  <div class="new-post-contents">
-    <h2 class="new-posts-title">新着投稿一覧</h2>
+    <h2 class="new-posts-title">"<%= params[:keyword] %>"の検索結果</h2>
     <ul class='post-lists'>
       <% @posts.each do |post| %>
         <%= render 'posts/post', post: post %>

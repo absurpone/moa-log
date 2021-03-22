@@ -1,0 +1,100 @@
+<%= form_with model: @post, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <%# 画像選択 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        画像
+        <span class="indispensable">※</span>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+    <%# /画像選択 %>
+    <%# 都道府県選択 %>
+    <div class="prefecture-select">
+      <div class="weight-bold-text">
+        施設の所在地
+        <span class="indispensable">※</span>
+      </div>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) %>
+    </div>
+    <%# /都道府県選択 %>
+    <%# 施設名入力 %>
+    <div class="museum-name-input">
+      <div class="weight-bold-text">
+        施設名
+      <span class="indispensable">※</span>
+      </div>
+      <%= f.text_field :museum_name, class: 'museum-name-text', placeholder: "例：〇〇美術館" %>
+    </div>
+    <%# /施設名入力 %>
+
+    <%# 評価（☆）の選択 %>
+    <div class="form-group row" id="star">
+      <div class="weight-bold-text">
+        おすすめ度
+        <span class="indispensable">※</span>
+      </div>
+      <%= f.hidden_field :rating, id: :review_star %>
+    </div>
+
+    <!-- 評価javascript -->
+    <script>
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+
+      scoreName: 'post[rating]',
+      half: true,
+    });
+    </script>  
+
+    <!-- //評価javascript -->
+    <%#/評価の選択  %>
+    <%# 展覧会名 %>
+    <div class="exhibition-title-input">
+      <div class="weight-bold-text">
+        展覧会名
+      </div>
+      <%= f.text_area :exhibition_title, class: 'exhibiton-title-text' %>
+    </div>
+    <%#/展覧会名 %>
+
+    <%# 印象に残った作家 %>
+    <div class="impressive-artist-input">
+      <div class="weight-bold-text">
+        印象的だった作家名
+      </div>
+      <%= f.text_area :impressive_artist, class: 'impressive-input' %>
+    </div>
+    <%# /印象に残った作家 %>
+    <%# 印象に残った作品 %>
+    <div class="impressive-work-input">
+      <div class="weight-bold-text">
+        印象的だった作品名
+      </div>
+      <%= f.text_area :impressive_artist, class: 'impressive-input' %>
+    </div>
+    <%# 印象に残った作品 %>
+    <%# 感想 %>
+    <div class="text-input">
+      <div class="weight-bold-text">
+        感想
+      </div>
+      <%= f.text_area :text, class: 'text-input-area' %>
+    </div>
+    <%# 感想 %>
+    <%# 注意書き %>
+    <div class="caution">
+      <p class="sentence">
+        ※著作権を侵害する、<br>またはその可能性がある投稿は禁止です
+      </p>
+    </div>
+    <%# /注意書き %>
+    <div class="post-btn-contents">
+      <%= f.submit "投稿", class:"post-btn" %>
+    </div>
+  <% end %>
