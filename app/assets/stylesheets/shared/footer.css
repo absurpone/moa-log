@@ -1,16 +1,19 @@
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
+
 .footer-contents {
   width: 100vw;
   height: 100px;
-  background-color: black;
+  border-top: 1px black solid;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.footer-logo {
-  color: #ffffff;
+.footer-mark {
   font-weight: bold;
-  font-size: 5vh;
-  text-decoration: none;
+  font-size: 40px;
+  
 }
-

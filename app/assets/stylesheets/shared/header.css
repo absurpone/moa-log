@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
- }
-
 .top-page-header {
   width: 100vw;
   height: 70px;
@@ -29,7 +25,7 @@ a {
 }
 
 .search-form {
-  width: 50vw;
+  width: 40vw;
   height: 4vh;
   margin-left: 5vw;
   margin-right: 3vw;

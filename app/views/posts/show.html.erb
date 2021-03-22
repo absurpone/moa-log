@@ -3,48 +3,97 @@
 <main class="main">
   <div class="inner">
     <div class="post__wrapper">
-      <p class="post__hedding">
+      <p class="post_heading">
         <%= @post.museum_name %>
       </p>
-      <%= link_to "by #{ @post.user.name }", '#', class: :post__user %>
+      <div class="post-second-heading">
+        <%# 星の表示 %>
+        <%= render partial: "star", locals: { post: @post } %>
+        <%# //星の表示 %>
+        <div class="post-user-name">
+          <%= link_to "by #{ @post.user.name }", user_path(@post.user.id) %>
+        </div>
+      </div>
         <% if user_signed_in? && current_user.id == @post.user_id %>
           <div class="post__manage">
-            <%= link_to "編集", edit_post_path(@post.id), method: :get, class: :post__btn %>
-            <%= link_to "削除", post_path(@post.id), method: :delete, class: :post__btn %>
+            <div class="delete-post-btn">
+              <%= link_to post_path(@post.id), method: :delete, class: "delete-btn", title: '削除', data: {confirm: "削除しますか？"} do %>
+                <i class="fa fa-trash fa-2x fa-fw "></i>
+              <% end %>
+            </div>
+            <div class="edit-post-btn">
+              <%= link_to edit_post_path(@post.id), method: :get, class: "edit-btn", title: '投稿の編集' do %>
+                <i class="fa fa-pencil-square fa-2x fa-fw "></i> 
+              <% end %>
+            </div>
+          </div>
+        <% else %>
+          <div class='detail-favorite'>
+            <% if user_signed_in? %>
+              <% if current_user.favorited_by?(@post.id) %>
+                <td>
+                  <%= link_to destroy_favorite_path(@post), class: "favorite-link", method: :delete do %>
+                    <i class="fa fa-heart unlike-btn"></i>
+                  <% end %>
+                  <%= @post.favorites.count %></td>
+              <% else %>
+                <td>
+                  <%= link_to create_favorite_path(@post), class: "favorite-link", method: :post do %>
+                    <i class="fa fa-heart like-btn"></i>
+                  <% end %>
+                  <%= @post.favorites.count %>
+                </td>
+              <% end %>
+            <% else %>
+            <i class="fa fa-heart unlike-btn"></i>
+            <%= @post.favorites.count %>
+            <% end %>
           </div>
         <% end %>
       <div class="post__image">
-        <%= image_tag @post.image, class:"item-box-img" %>
+        <%= image_tag @post.image, class:"post-box-img" %>
       </div>
-       <%# 星の表示 %>
-       <%= render partial: "star", locals: { post: @post } %>     
-       <%# //星の表示 %>
-      <div class="post__body">
-        <div class="post__detail">
-          <p class="detail__title">仮の文章</p>
-          <p class="detail__message">
-            <%= @post.exhibition_title %>
-          </p>
-        </div>
-        <div class="post__detail">
-          <p class="detail__title">感想</p>
-          <p class="detail__message">
-            <%= @post.text %>
-          </p>
-          <p class="detail__title">所在地</p>
-          <p class="detail__message">
-            <%= @post.prefecture.name %>
-          </p>
-          <p class="detail__title">印象的だった作家</p>
-          <p class="detail__message">
-            <%= @post.impressive_artist %>
-          </p>
-          <p class="detail__title">印象的だった作品名</p>
-          <p class="detail__message">
-            <%= @post.impressive_work %>
-          </p>
-        </div>
+       <div class="post-explain-box">
+        <table class="detail-table">
+          <tbody>
+            <tr>
+              <th class="detail-post">所在地</th>
+              <td class="detail-value"><%= @post.prefecture.name %></td>
+            </tr>
+            <% if @post.exhibition_title.present? %>
+              <tr>
+                <th class="detail-post">展覧会名</th>
+                <td class="detail-value"><%= @post.exhibition_title %></td>
+              </tr>
+            <% end%>
+            <% if @post.text.present? %>
+              <tr>
+                <th class="detail-post">感想</th>
+                <td class="detail-value"><%= @post.text %></td>
+              </tr>
+            <% end %>
+            <% if @post.impressive_artist.present? %>
+              <tr>
+                <th class="detail-post">印象的だった<br>作家名</th>
+                <td class="detail-value"><%= @post.impressive_artist %></td>
+              </tr>
+            <% end %>
+            <% if @post.impressive_work.present? %>
+              <tr>
+                <th class="detail-post">印象的だった<br>作品名</th>
+                <td class="detail-value"><%= @post.impressive_work %></td>
+              </tr>
+            <% end %>
+            <% if @post.text.present? %>
+              <tr>
+                <th class="detail-post">投稿日</th>
+                <td class="detail-value"><%= @post.created_at.strftime("%Y年%m月%d日") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </main>
+<%= render "shared/footer" %>

@@ -4,31 +4,7 @@
     <h2 class="new-posts-title">お気に入り投稿一覧</h2>
     <ul class='post-lists'>
       <% @favorite_posts.each do |post| %>
-        <li class='post-list'>
-          <%= link_to post_path(post.id) do %>
-          <div class='post-img-content'>
-            <%= image_tag post.image, class: "post-img" %>
-          </div>
-          
-          <div class='post-info'>
-            <div class='post-info-head'>
-              <div class='museum-name'>
-                <%= post.museum_name %>
-              </div>
-            </div>
-            <%# 星の表示 %>
-            <%= render 'posts/star', post: post %>
-            <%# //星の表示 %>
-            <div class='user-name'>
-              by <%= link_to post.user.name, user_path(post.user.id) %>
-            </div>
-            <%# お気に入り %>
-            <tr id="post_<%= post.id %>">
-              <%= render 'posts/favorite', post: post %>
-            </tr>
-            <%# //お気に入り %>
-          <% end %>
-        </li>
+        <%= render partial: "posts/post", locals: { post: post } %>
       <% end %>
     </ul>
   </div>

@@ -1,9 +1,8 @@
 <%= render "shared/header" %>
-<div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">新規投稿作成</h2>
-        <%= render partial: "form", locals: { post: @post } %>
-    </div>
-  </div>
+
+<div class="new-post-contents">
+  <h2 class="page-heading">新規投稿作成</h2>
+  <h3 class="indispensable">※の項目は必須です</h3>
+     <%= render partial: "form", locals: { post: @post } %>
 </div>
+<%= render "shared/footer" %>
