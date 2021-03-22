@@ -80,3 +80,9 @@
 .caution {
   padding: 5vh 0;
 }
+
+.user-input {
+  width: 100%;
+  resize: none;
+  margin-bottom: 15px;
+}
