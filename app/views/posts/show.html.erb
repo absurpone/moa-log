@@ -14,7 +14,11 @@
           <%= link_to "by #{ @post.user.name }", user_path(@post.user.id) %>
         </div>
       </div>
-        <% if user_signed_in? && current_user.id == @post.user_id %>
+       
+      <div class="post__image">
+        <%= image_tag @post.image, class:"post-box-img" %>
+      </div>
+       <% if user_signed_in? && current_user.id == @post.user_id %>
           <div class="post__manage">
             <div class="delete-post-btn">
               <%= link_to post_path(@post.id), method: :delete, class: "delete-btn", title: '削除', data: {confirm: "削除しますか？"} do %>
@@ -50,9 +54,6 @@
             <% end %>
           </div>
         <% end %>
-      <div class="post__image">
-        <%= image_tag @post.image, class:"post-box-img" %>
-      </div>
        <div class="post-explain-box">
         <table class="detail-table">
           <tbody>
