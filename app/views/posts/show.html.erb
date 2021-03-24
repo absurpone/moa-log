@@ -33,25 +33,13 @@
           </div>
         <% else %>
           <div class='detail-favorite'>
-            <% if user_signed_in? %>
-              <% if current_user.favorited_by?(@post.id) %>
-                <td>
-                  <%= link_to destroy_favorite_path(@post), class: "favorite-link", method: :delete do %>
-                    <i class="fa fa-heart unlike-btn"></i>
-                  <% end %>
-                  <%= @post.favorites.count %></td>
-              <% else %>
-                <td>
-                  <%= link_to create_favorite_path(@post), class: "favorite-link", method: :post do %>
-                    <i class="fa fa-heart like-btn"></i>
-                  <% end %>
-                  <%= @post.favorites.count %>
-                </td>
-              <% end %>
-            <% else %>
-            <i class="fa fa-heart unlike-btn"></i>
-            <%= @post.favorites.count %>
-            <% end %>
+            <table>
+              <tbody>
+                <tr id="post_<%= @post.id %>">
+                  <%= render 'posts/favorite', post: @post %>
+                </tr>
+              </tbody>
+            </table>
           </div>
         <% end %>
        <div class="post-explain-box">
