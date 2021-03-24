@@ -17,12 +17,17 @@ password: test55
 美術館へ行くのが好きな人、また興味はあるけど行ったことがない人が気軽に見られるものになるよう心がけて制作しました。  
 
 # DEMO
-## トップページ
+## トップページ（上部）
 ![topoage](https://user-images.githubusercontent.com/78207434/112251866-5ba28b80-8c9f-11eb-9e97-ea12d4ab3d67.jpg)
+
+## トップページ（下部）
+![toppage_bottom](https://user-images.githubusercontent.com/78207434/112260490-58160100-8cad-11eb-9dd8-8b517f8c2514.jpg)
+
 ## 新規投稿画面
 <img width="937" alt="post_new" src="https://user-images.githubusercontent.com/78207434/112259344-78dd5700-8cab-11eb-8fcc-f0195ef658c7.png">
+
 ## 投稿詳細画面
-![post_show](https://user-images.githubusercontent.com/78207434/112259829-45e79300-8cac-11eb-90a8-67271d12e47c.jpg)
+![post_show](https://user-images.githubusercontent.com/78207434/112260171-d3c37e00-8cac-11eb-8141-63879203d380.jpg)
 
 
 
