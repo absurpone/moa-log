@@ -40,31 +40,31 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword])
+    @posts = Post.search(params[:keyword]).order('created_at DESC')
   end
 
   def search_hokkaido_tohoku
-    @posts_hokkaido_tohoku = Post.search_hokkaido_tohoku
+    @posts_hokkaido_tohoku = Post.search_hokkaido_tohoku.order('created_at DESC')
   end
   
   def search_kanto
-    @posts_kanto = Post.search_kanto
+    @posts_kanto = Post.search_kanto.order('created_at DESC')
   end
 
   def search_chubu
-    @posts_chubu = Post.search_chubu
+    @posts_chubu = Post.search_chubu.order('created_at DESC')
   end
 
   def search_kinki
-    @posts_kinki = Post.search_kinki
+    @posts_kinki = Post.search_kinki.order('created_at DESC')
   end
 
   def search_chugoku_shikoku
-    @posts_chugoku_shikoku = Post.search_chugoku_shikoku
+    @posts_chugoku_shikoku = Post.search_chugoku_shikoku.order('created_at DESC')
   end
 
   def search_kyusyu_okinawa
-    @posts_kyusyu_okinawa = Post.search_kyusyu_okinawa
+    @posts_kyusyu_okinawa = Post.search_kyusyu_okinawa.order('created_at DESC')
   end
 
 

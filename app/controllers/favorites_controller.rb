@@ -1,9 +1,9 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create, :destroy]
-  before_action :set_post, 
+  before_action :set_post, only: [:create, :destroy]
 
   def index
-    @favorite_posts = current_user.favorite_posts
+    @favorite_posts = current_user.favorite_posts.order('created_at DESC')
   end
 
   def create
