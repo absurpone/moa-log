@@ -1,14 +1,14 @@
  <% if user_signed_in? %>
     <% if current_user.favorited_by?(post.id) %>
       <td>
-        <%= link_to destroy_favorite_path(post), class: "favorite-link", method: :delete, remote: true do %>
+        <%= link_to destroy_favorite_path(post), class: "favorite-link", method: :delete, title: 'お気に入り解除', remote: true do %>
           <i class="fa fa-heart unlike-btn"></i>
         <% end %>
         <%= post.favorites.count %>
       </td>
     <% else %>
       <td>
-        <%= link_to create_favorite_path(post), class: "favorite-link", method: :post, remote: true  do %>
+        <%= link_to create_favorite_path(post), class: "favorite-link", method: :post, title: 'お気に入り登録', remote: true  do %>
           <i class="fa fa-heart like-btn"></i>
         <% end %>
         <%= post.favorites.count %>
