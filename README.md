@@ -7,6 +7,10 @@ MoALog（モアログ）
 
 # 本番環境
 http://18.180.161.218/  
+Basic認証  
+ID: 34483  
+Password: 1212  
+  
 確認用ログイン情報  
 email: test@test.com  
 password: test55  
