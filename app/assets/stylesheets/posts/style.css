@@ -29,6 +29,10 @@
   margin-bottom: 10px;
 }
 
+.img-upload { 
+  height: 30%;
+}
+
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
