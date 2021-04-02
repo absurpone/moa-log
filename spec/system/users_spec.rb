@@ -44,7 +44,7 @@ RSpec.describe "Users", type: :system do
       expect(find('.menu-content', visible: false).text(:all)).to include '新規登録'
       # 新規登録ページへ移動する
       visit new_user_registration_path
-      # ユーザー情報を入力する
+      # 誤った情報でユーザー情報を入力する
       fill_in 'user_name', with: ''
       fill_in 'user_email', with: ''
       fill_in 'user_password', with: ''
