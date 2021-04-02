@@ -6,7 +6,7 @@ def visit_with_http_auth(path)
   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
 end
 
-RSpec.describe "Users", type: :system do
+RSpec.describe "Sign_up", type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -55,6 +55,51 @@ RSpec.describe "Users", type: :system do
       }.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(current_path).to eq('/users')
+    end
+  end
+end
+
+RSpec.describe 'Log_in', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+  context 'ログインができるとき' do
+    it '保存されているユーザーの情報と合致すればログインができる' do
+      # Basic認証の通過
+      visit_with_http_auth root_path
+      # トップページにログインページへ遷移するボタンがあることを確認する
+      expect(find('.menu-content', visible: false).text(:all)).to include 'ログイン'
+      # ログインページへ遷移する
+      visit new_user_session_path
+      # 正しいユーザー情報を入力する
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # トップページへ遷移することを確認する
+      expect(current_path).to eq(root_path)
+      # メニュー内にログアウトボタンが表示されることを確認する
+      expect(find('.menu-content', visible: false).text(:all)).to include 'ログアウト'
+      # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
+      expect(find('.menu-content', visible: false).text(:all)).not_to include '新規登録'
+      expect(find('.menu-content', visible: false).text(:all)).not_to include 'ログイン'
+    end
+  end
+  context 'ログインができないとき' do
+    it '保存されているユーザーの情報と合致しないとログインができない' do
+      # Basic認証の通過
+      visit_with_http_auth root_path
+      # トップページにログインページへ遷移するボタンがあることを確認する
+      expect(find('.menu-content', visible: false).text(:all)).to include 'ログイン'
+      # ログインページへ遷移する
+      visit new_user_session_path
+      # 誤ったユーザー情報を入力する
+      fill_in 'user_email', with: ''
+      fill_in 'user_password', with: ''
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # ログインページへ戻されることを確認する
+      expect(current_path).to eq(new_user_session_path)
     end
   end
 end
