@@ -79,3 +79,39 @@ RSpec.describe '投稿機能', type: :system do
     end
   end
 end
+
+RSpec.describe '投稿編集', type: :system do
+  before do
+    @post1 = FactoryBot.create(:post)
+    @post2 = FactoryBot.create(:post)
+  end
+
+  context '投稿編集できるとき' do
+    it 'ログインしたユーザーは自分の投稿を編集できる' do
+      # 投稿1を投稿したユーザーでログインする
+      # ログインする
+      visit_with_http_auth new_user_session_path
+      fill_in 'user_email', with: @post1.user.email
+      fill_in 'user_password', with: @post1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 投稿1 の詳細ページへ遷移する
+      visit post_path(@post1.id)
+      # 投稿1に「編集」ボタンがあることを確認する
+      expect(page).to have_link title: '投稿の編集', href: edit_post_path(@post1)
+      # 編集ページへ遷移する
+      visit edit_post_path(@post1)
+      # すでに投稿済みの内容がフォームに入っていることを確認する
+      expect(
+        find('#post_text').value
+      ).to eq(@post1.text)
+      # 投稿内容を編集する
+      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      # 編集完了画面に遷移したことを確認する
+      # 「更新が完了しました」の文字があることを確認する
+      # トップページに遷移する
+      # トップページには先ほど変更した内容の投稿が存在することを確認する（画像）
+      # トップページには先ほど変更した内容の投稿が存在することを確認する（テキスト）
+    end
+  end
+end
