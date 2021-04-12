@@ -79,3 +79,56 @@ RSpec.describe '投稿機能', type: :system do
     end
   end
 end
+
+RSpec.describe '投稿編集', type: :system do
+  before do
+    @post1 = FactoryBot.create(:post)
+    @post2 = FactoryBot.create(:post)
+  end
+
+  context '投稿編集できるとき' do
+    it 'ログインしたユーザーは自分の投稿を編集できる' do
+      # 投稿1を投稿したユーザーでログインする
+      # ログインする
+      visit_with_http_auth new_user_session_path
+      fill_in 'user_email', with: @post1.user.email
+      fill_in 'user_password', with: @post1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 投稿1 の詳細ページへ遷移する
+      visit post_path(@post1.id)
+      # 投稿1に「編集」ボタンがあることを確認する
+      expect(page).to have_link title: '投稿の編集', href: edit_post_path(@post1)
+      # 編集ページへ遷移する
+      visit edit_post_path(@post1)
+      # すでに投稿済みの内容がフォームに入っていることを確認する
+      expect(
+        find('#post_museum_name').value
+      ).to eq(@post1.museum_name)
+      expect(
+        find('#post_exhibition_title').value
+      ).to eq(@post1.exhibition_title)
+      expect(
+        find('#post_impressive_artist').value
+      ).to eq(@post1.impressive_artist)      
+      expect(
+        find('#post_text').value
+      ).to eq(@post1.text)
+      # 投稿内容を編集する
+      fill_in 'post_museum_name', with: "編集した+{@post.museum_name}"
+      find('#star').find("img[alt='2']").click
+      fill_in 'post_exhibition_title', with: "編集した+#{@post1.exhibition_title}"
+      fill_in 'post_impressive_artist', with: "編集した+#{@post1.impressive_artist}"
+      fill_in 'post_impressive_work', with: "編集した+#{@post1.impressive_work}"
+      fill_in 'post_text', with: "編集した+#{@post1.text}"
+      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Post.count }.by(0)
+      # 投稿詳細画面に遷移する
+      expect(current_path).to eq(post_path(@post1.id))
+      # トップページには先ほど変更した内容の投稿が存在することを確認する（テキスト）
+      expect(page).to have_content("編集した+#{@post1.text}")
+    end
+  end
+end
