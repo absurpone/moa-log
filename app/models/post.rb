@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments
   has_one_attached :image
   has_many :favorites, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions
