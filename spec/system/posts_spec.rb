@@ -149,16 +149,16 @@ RSpec.describe '投稿削除', type: :system do
       # 投稿1 の詳細ページへ遷移する
       visit post_path(@post1.id)
       # ツイート1に「削除」ボタンがあることを確認する
-      expect(page).to have_link(title: '削除')
+      expect(page).to have_link(title: '削除', href: post_path(@post1.id))
       # 投稿を削除するとレコードの数が1減ることを確認する
       page.accept_confirm do
         expect{
-          find_link(title: '削除').click
+          find_link(title: '削除', href: post_path(@post1.id)).click
         }.to change { Post.count }.by(-1)
       end
       
-      # # トップページに遷移する
-      # expect(current_path).to eq(root_path)
+      # トップページに遷移する
+      expect(current_path).to eq(root_path)
       # トップページにはツイート1の内容が存在しないことを確認する（画像）
       # トップページにはツイート1の内容が存在しないことを確認する（テキスト）
     end
