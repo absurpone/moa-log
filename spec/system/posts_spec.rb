@@ -34,7 +34,7 @@ RSpec.describe '投稿機能', type: :system do
       fill_in 'post_text', with: @post.text
       # 送信するとPostモデルのカウントが1上がることを確認する
       expect{
-      find('input[name="commit"]').click
+        find('input[name="commit"]').click
       }.to change { Post.count }.by(1)
       # トップページに遷移したことを確認する
       expect(current_path).to eq(root_path)
@@ -131,4 +131,47 @@ RSpec.describe '投稿編集', type: :system do
       expect(page).to have_content("編集した+#{@post1.text}")
     end
   end
+end
+
+RSpec.describe '投稿削除', type: :system do
+  before do
+    @post1 = FactoryBot.create(:post)
+    @post2 = FactoryBot.create(:post)
+  end
+  context '投稿削除ができるとき' do
+    it 'ログインしたユーザーは自らが投稿したツイートの削除ができる' do
+      # 投稿1を投稿したユーザーでログインする
+      visit_with_http_auth new_user_session_path
+      fill_in 'user_email', with: @post1.user.email
+      fill_in 'user_password', with: @post1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # 投稿1 の詳細ページへ遷移する
+      visit post_path(@post1.id)
+      # ツイート1に「削除」ボタンがあることを確認する
+      expect(page).to have_link(title: '削除')
+      # 投稿を削除するとレコードの数が1減ることを確認する
+      page.accept_confirm do
+        expect{
+          find_link(title: '削除').click
+        }.to change { Post.count }.by(-1)
+      end
+      
+      # # トップページに遷移する
+      # expect(current_path).to eq(root_path)
+      # トップページにはツイート1の内容が存在しないことを確認する（画像）
+      # トップページにはツイート1の内容が存在しないことを確認する（テキスト）
+    end
+  end
+  # context 'ツイート削除ができないとき' do
+  #   it 'ログインしたユーザーは自分以外が投稿したツイートの削除ができない' do
+  #     # ツイート1を投稿したユーザーでログインする
+  #     # ツイート2に「削除」ボタンが無いことを確認する
+  #   end
+  #   it 'ログインしていないとツイートの削除ボタンがない' do
+  #     # トップページに移動する
+  #     # ツイート1に「削除」ボタンが無いことを確認する
+  #     # ツイート2に「削除」ボタンが無いことを確認する
+  #   end
+  # end
 end
