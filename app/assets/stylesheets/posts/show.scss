@@ -73,3 +73,28 @@
   border: 1px solid #dedede;
   font-size: 14px;
 }
+
+.comment-box {
+  width: 100%;
+  background-color: #fff;
+  margin: 5vh 0;
+  text-align: center;
+}
+
+.comment-text {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: solid 2px #dedede;
+  resize: none;
+}
+
+.comment-submit {
+  margin-bottom: 2vh;
+}
+
+.comment-contents {
+  text-align: left;
+  border-bottom: lightgray 1px solid;
+  margin: 0 5px 5px;
+}
