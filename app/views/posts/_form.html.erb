@@ -1,5 +1,5 @@
 <%= form_with model: @post, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <%# 画像選択 %>
     <div class="img-upload">
       <div class="weight-bold-text">
