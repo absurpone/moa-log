@@ -16,7 +16,10 @@
       </div>
        
       <div class="post__image">
-        <%= image_tag @post.image, class:"post-box-img" %>
+        <% @post.images.each do |image| %>
+          <%= image_tag image, class: 'images' %>
+        <% end %>
+        <%# <%= image_tag @post.image, class:"post-box-img" %> 
       </div>
        <% if user_signed_in? && current_user.id == @post.user_id %>
           <div class="post__manage">

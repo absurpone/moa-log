@@ -7,7 +7,7 @@
         <span class="indispensable">※</span>
       </div>
       <div class="click-upload">
-        <%= f.file_field :image %>
+        <%= f.file_field :images, name: 'message[images] []', id: 'message_image' %>
       </div>
        <div id="image-list", class="image-list">
        </div>
