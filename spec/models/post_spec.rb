@@ -40,25 +40,25 @@ RSpec.describe Post, type: :model do
       it 'imageが空では保存できないこと' do
         @post.image = nil
         @post.valid?
-        expect(@post.errors.full_messages).to include("Image can't be blank")
+        expect(@post.errors.full_messages).to include("画像を入力してください")
       end
 
       it 'museum_nameが空では保存できないこと' do
         @post.museum_name = ''
         @post.valid?
-        expect(@post.errors.full_messages).to include("Museum name can't be blank")
+        expect(@post.errors.full_messages).to include("施設名を入力してください")
       end
 
       it 'ratingが空では保存できないこと' do
         @post.rating = nil
         @post.valid?
-        expect(@post.errors.full_messages).to include("Rating can't be blank")
+        expect(@post.errors.full_messages).to include("おすすめ度を入力してください")
       end
 
       it 'prefecture_idが1（---）では保存できないこと' do
         @post.prefecture_id = 1
         @post.valid?
-        expect(@post.errors.full_messages).to include('Prefecture must be other than 1')
+        expect(@post.errors.full_messages).to include('施設の所在地は1以外の値にしてください')
       end
     end
   end
