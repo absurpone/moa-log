@@ -3,11 +3,11 @@
   <h2 class="page-heading">ログイン</h2>
   
       
-    <%# ログイン時のエラーメッセージ  %>
-    <div class='login-flash-message'>
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
-    </div>
+  <%# ログイン時のエラーメッセージ  %>
+  <div class='login-flash-message'>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+  </div>
   <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
     
     <div class="user-info-input">

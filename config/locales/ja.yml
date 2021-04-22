@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      post:
+        museum_name: 施設名
+        image: 画像
+        rating: おすすめ度
+        prefecture_id: 施設の所在地
